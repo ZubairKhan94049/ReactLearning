@@ -1,9 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    // back tick is use for template leteral in javaScript
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+
     <div className="container-fluid">
       <a className="navbar-brand" href="/">{props.title_name}</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,15 +21,19 @@ export default function Navbar(props) {
           </li>
   
         </ul>
-        <form className="d-flex" role="search">
+        {/* <form className="d-flex" role="search">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> */}
+        <div className={`form-check form-switch text-${props.modeText}`}>
+          <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark-Mode</label>
+        </div>
       </div>
     </div>
   </nav>
   )
 }
 
-Navbar.propTypes = {title_name:PropTypes.string}
-Navbar.defaultProps = {title_name: "Set Title Here"}
+// Navbar.propTypes = {title_name:PropTypes.string}
+// Navbar.defaultProps = {title_name: "Set Title Here"}
